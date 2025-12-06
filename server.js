@@ -98,7 +98,7 @@ app.get("/api/gallery", (req, res) => {
         const ext = path.extname(file).toLowerCase();
         const isVideo = videoExts.includes(ext);
 
-        const url = `/legacy/images/gallery/${file}`;
+        const url = `Public/legacy/images/gallery/${file}`;
 
         // Extract category from filename: category_imageName_timestamp.ext
         const withoutExt = file.replace(/\.[^.]+$/, "");
@@ -161,4 +161,5 @@ app.get("/api/gallery", (req, res) => {
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+
 });
