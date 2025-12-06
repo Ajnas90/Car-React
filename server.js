@@ -10,11 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 // Folder: public/legacy/images/gallery
-const galleryDir = path.join(__dirname, "public", "legacy", "images", "gallery");
+const galleryDir = path.join(__dirname, "Public", "legacy", "images", "gallery");
 fs.mkdirSync(galleryDir, { recursive: true });
 
 // Serve static files so React can load them
-app.use("/legacy", express.static(path.join(__dirname, "public", "legacy")));
+app.use("/legacy", express.static(path.join(__dirname, "Public", "legacy")));
 
 // Multer storage
 const storage = multer.diskStorage({
@@ -98,7 +98,7 @@ app.get("/api/gallery", (req, res) => {
         const ext = path.extname(file).toLowerCase();
         const isVideo = videoExts.includes(ext);
 
-        const url = `Public/legacy/images/gallery/${file}`;
+        const url = `/legacy/images/gallery/${file}`;
 
         // Extract category from filename: category_imageName_timestamp.ext
         const withoutExt = file.replace(/\.[^.]+$/, "");
@@ -163,3 +163,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 
 });
+
